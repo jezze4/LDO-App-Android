@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:paddingBottom="20dp"
     >
     <ImageView
@@ -52,6 +52,9 @@
         />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_below="@+id/add_button"
         android:id="@+id/item_list"
         android:layout_width="match_parent"
