@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "96874397899",
+    "firebase_url": "https://ldo-list.firebaseio.com",
+    "project_id": "ldo-list",
+    "storage_bucket": "ldo-list.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96874397899:android:86450e227dbe48ea",
+        "android_client_info": {
+          "package_name": "com.example.jezze.ldo_app_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96874397899-shdjcsc7hek9t2mekhdg4uf67tfh39k1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jezze.ldo_app_android",
+            "certificate_hash": "5b6e8e4fadb6fd9227309daced3baf80d87e43dd"
+          }
+        },
+        {
+          "client_id": "96874397899-g4cghv2c691clv39k4knn6bs84mvcfsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2f-QKvdzLmzRtoWGYm5xJEUuhhgTG8wo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96874397899-g4cghv2c691clv39k4knn6bs84mvcfsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

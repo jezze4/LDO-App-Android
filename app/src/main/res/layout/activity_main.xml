@@ -43,8 +43,7 @@
         android:background="@drawable/button_background"
         android:textColor="#ffff"
         android:textStyle="bold"
-        android:layout_marginBottom="5dp"
-        />
+        android:layout_marginBottom="5dp"/>
     <Button
         android:text="Add Job (ONLY FOR TESTING)"
         android:id="@+id/add_button"
@@ -56,7 +55,6 @@
         android:background="@drawable/button_background"
         android:textColor="#ffff"
         android:textStyle="bold"
-        android:onClick="launch_addListing"
         />
 
     <android.support.v7.widget.RecyclerView
