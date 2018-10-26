@@ -29,10 +29,6 @@ class AddListing : Activity() {
     private var mDatabase: DatabaseReference? = null
 
 
-//    private var mMessageReference: DatabaseReference =
-//            FirebaseDatabase.getInstance().getReference("data")
-
-
     private val uploadListener = View.OnClickListener {
         title_string = title!!.text.toString()
         desc_string = description!!.text.toString()
@@ -42,8 +38,24 @@ class AddListing : Activity() {
             val dataRef = mDatabase!!.child(title_string!!)
             dataRef.child("description").setValue(desc_string)
             dataRef.child("salary").setValue(salary_string)
+
+            Toast.makeText(this@AddListing,
+                    "Data uploaded successfully !",
+                    Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this@AddListing, "Enter the required fields!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@AddListing,
+                           "Enter the required fields!",
+                            Toast.LENGTH_SHORT).show()
+            /* Set hints and errors for missing required fields */
+            if(title_string == "") {
+                title!!.setError("A title is required!")
+                title!!.setHint("Enter a Title...")
+            }
+            if(desc_string == "") {
+                description!!.setError("A description is required!")
+                description!!.setHint("Enter a description...")
+            }
+
         }
 
     }
