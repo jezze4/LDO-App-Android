@@ -2,7 +2,7 @@ package com.example.jezze.ldo_app_android
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
+//import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -13,22 +13,22 @@ import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.DatabaseReference
+//import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
 import java.util.ArrayList
-import java.util.Collections
+//import java.util.Collections
 
 class JobListing : Activity() {
 
-    private val databaseReference = FirebaseDatabase.getInstance().getReference("data")
+    private val databaseReference = FirebaseDatabase.getInstance().reference
     private var titles : ArrayList<String>? = null
     private var descriptions : ArrayList<String>? = null
     private var salaries : ArrayList<String>? = null
     private var dates : ArrayList<String>? = null
     private var locations : ArrayList<String>? = null
     private var adapter : FeedAdapter? = null
-    private var item_listing : LinearLayout = findViewById(R.id.item_box)
+//    private var item_listing : LinearLayout = findViewById(R.id.item_box)
 
     private val eventListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -43,11 +43,11 @@ class JobListing : Activity() {
                         salaries!!.add(value)
                 }
             }
+            adapter!!.notifyDataSetChanged()
         }
 
         override fun onCancelled(p0: DatabaseError) {
-            TODO("not implemented")
-            //To change body of created functions use File | Settings | File Templates.
+            // Do not know what to implement here.
         }
     }
 
@@ -58,6 +58,8 @@ class JobListing : Activity() {
         titles = ArrayList()
         dates = ArrayList()
         locations = ArrayList()
+        descriptions = ArrayList()
+        salaries = ArrayList()
 
         setUpRecyclerView()
     }
@@ -66,6 +68,8 @@ class JobListing : Activity() {
         titles!!.clear()
         dates!!.clear()
         locations!!.clear()
+        descriptions!!.clear()
+        salaries!!.clear()
     }
 
     private fun setUpRecyclerView() {
@@ -75,8 +79,9 @@ class JobListing : Activity() {
         recyclerView.layoutManager = layoutManager
         adapter = FeedAdapter(this,
                                 titles as List<String>,
-                                locations as List<String>,
-                                dates as List<String>)
+                                descriptions as List<String>,
+                                salaries as List<String>)
+        recyclerView.adapter = adapter
 
     }
 
@@ -119,8 +124,8 @@ class JobListing : Activity() {
 
     inner class FeedAdapter(private val context: Context,
                             private val titles: List<String>,
-                            private val locations: List<String>,
-                            private val dates: List<String>)
+                            private val descriptions: List<String>,
+                            private val salaries: List<String>)
                             :RecyclerView.Adapter<FeedHolder>(){
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FeedHolder {
             val rootView = LayoutInflater
@@ -131,14 +136,14 @@ class JobListing : Activity() {
 
         override fun onBindViewHolder(holder: FeedHolder, pos: Int) {
             holder.feedTitle.text = titles[pos]
-            holder.feedLocation.text = locations[pos]
-            holder.feedDate.text = dates[pos]
+            holder.feedLocation.text = descriptions[pos]
+            holder.feedDate.text = salaries[pos]
 
-            findViewById<LinearLayout>(R.id.item_box).setOnClickListener(){
-                Toast.makeText(this@JobListing,
-                        "You clicked on the Toaster",
-                        Toast.LENGTH_SHORT).show()
-            }
+//            findViewById<LinearLayout>(R.id.item_box).setOnClickListener{
+//                Toast.makeText(this@JobListing,
+//                        "You clicked on the Toaster",
+//                        Toast.LENGTH_SHORT).show()
+//            }
         }
         override fun getItemCount(): Int {
             return titles.size
