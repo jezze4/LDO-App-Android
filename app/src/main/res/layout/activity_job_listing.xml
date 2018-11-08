@@ -4,6 +4,13 @@
     Contains the RecyclerView for the JobList.
     List uses itemlisting.xml for layout style
 -->
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,6 +19,7 @@
     android:layout_height="match_parent"
     tools:context=".JobListing"
     android:orientation="vertical"
+
     >
 
     <ImageView
@@ -35,6 +43,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="Enter job title or keywords"
+        android:enabled="false"
         />
 
     <android.support.v7.widget.RecyclerView
@@ -44,3 +53,5 @@
         android:layout_height="match_parent"/>
 
 </LinearLayout>
+
+</ScrollView>

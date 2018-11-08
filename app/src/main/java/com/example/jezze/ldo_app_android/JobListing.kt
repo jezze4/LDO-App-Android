@@ -1,12 +1,25 @@
+/***********************************************************************
+ *                                                                      *
+ *                            Job Listing                               *
+ *                                                                      *
+ * This Kotlin file for the Admin-level app. contains 2 Buttons:        *
+ *  - Add Job: Links to AddListing.kt to add jobs to Firebase Database  *
+ *  - Find Jobs: Links to JobListing.kt - the User-level app            *
+ *                                                                      *
+ ***********************************************************************/
+
 package com.example.jezze.ldo_app_android
 
 import android.app.Activity
+import android.content.ClipData
+import android.content.ContentValues
 import android.content.Context
 //import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
+import android.widget.AdapterView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +28,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 //import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import org.w3c.dom.Text
 
 import java.util.ArrayList
 //import java.util.Collections
@@ -28,7 +42,10 @@ class JobListing : Activity() {
     private var dates : ArrayList<String>? = null
     private var locations : ArrayList<String>? = null
     private var adapter : FeedAdapter? = null
-//    private var item_listing : LinearLayout = findViewById(R.id.item_box)
+    private var item_listing : LinearLayout? = null
+
+    /* OnItemClickListener for the RecyclerView */
+    private var OICListener : AdapterView.OnItemClickListener? = null
 
     private val eventListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -81,7 +98,11 @@ class JobListing : Activity() {
                                 titles as List<String>,
                                 descriptions as List<String>,
                                 salaries as List<String>)
+
+        item_listing = findViewById(R.id.item_box)
+
         recyclerView.adapter = adapter
+
 
     }
 
@@ -127,6 +148,7 @@ class JobListing : Activity() {
                             private val descriptions: List<String>,
                             private val salaries: List<String>)
                             :RecyclerView.Adapter<FeedHolder>(){
+
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FeedHolder {
             val rootView = LayoutInflater
                     .from(viewGroup.context)
@@ -139,14 +161,16 @@ class JobListing : Activity() {
             holder.feedLocation.text = descriptions[pos]
             holder.feedDate.text = salaries[pos]
 
-//            findViewById<LinearLayout>(R.id.item_box).setOnClickListener{
-//                Toast.makeText(this@JobListing,
-//                        "You clicked on the Toaster",
-//                        Toast.LENGTH_SHORT).show()
-//            }
+            holder.itemView.setOnClickListener{
+                Toast.makeText(this@JobListing,
+                        "Clicked on " + holder.feedTitle.text + "!",
+                        Toast.LENGTH_SHORT).show()
+            }
         }
         override fun getItemCount(): Int {
             return titles.size
         }
+
+
     }
 }

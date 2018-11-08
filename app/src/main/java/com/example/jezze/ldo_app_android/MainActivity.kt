@@ -1,3 +1,13 @@
+/***********************************************************************
+*                                                                      *
+*                             Main Menu                                *
+*                                                                      *
+* This Kotlin file for the Admin-level app. contains 2 Buttons:        *
+*  - Add Job: Links to AddListing.kt to add jobs to Firebase Database  *
+*  - Find Jobs: Links to JobListing.kt - the User-level app            *
+*                                                                      *
+***********************************************************************/
+
 package com.example.jezze.ldo_app_android
 
 import android.app.Activity

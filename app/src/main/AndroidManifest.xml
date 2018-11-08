@@ -16,8 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddListing" />
-        <activity android:name=".JobListing"></activity>
+        <activity
+            android:name=".AddListing"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".JobListing"
+            android:windowSoftInputMode="stateHidden"
+            >
+        </activity>
     </application>
 
 </manifest>
