@@ -1,4 +1,4 @@
-/***********************************************************************
+ /***********************************************************************
  *                                                                      *
  *                            Job Listing                               *
  *                                                                      *
@@ -10,12 +10,16 @@
 
 package com.example.jezze.ldo_app_android
 
+import android.app.ActionBar
 import android.app.Activity
 import android.content.ClipData
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 //import android.content.Intent
 import android.os.Bundle
+//import android.support.v4.content.ContextCompat.startActivity
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
@@ -28,12 +32,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 //import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import org.w3c.dom.Text
 
 import java.util.ArrayList
 //import java.util.Collections
 
-class JobListing : Activity() {
+class JobListing : AppCompatActivity() {
 
     private val databaseReference = FirebaseDatabase.getInstance().reference
     private var titles : ArrayList<String>? = null
@@ -71,6 +74,8 @@ class JobListing : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_listing)
+
+        setSupportActionBar(findViewById(R.id.my_toolbar))
 
         titles = ArrayList()
         dates = ArrayList()
@@ -162,9 +167,14 @@ class JobListing : Activity() {
             holder.feedDate.text = salaries[pos]
 
             holder.itemView.setOnClickListener{
+                val intent = Intent(context, JobDetail::class.java)
+                intent.putExtra("detail_title", titles[pos])
+                intent.putExtra("detail_description", descriptions[pos])
+                intent.putExtra("detail_salary", salaries[pos])
                 Toast.makeText(this@JobListing,
                         "Clicked on " + holder.feedTitle.text + "!",
                         Toast.LENGTH_SHORT).show()
+                startActivity(intent)
             }
         }
         override fun getItemCount(): Int {
