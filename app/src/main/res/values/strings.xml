@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">LDO Staffing Solutions</string>
+
+
+    <!-- Spinner Entries for add_listing -->
+    <string-array name="pay">
+        <item>Hourly</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Annually</item>
+        <item>Temporary</item>
+    </string-array>
 </resources>

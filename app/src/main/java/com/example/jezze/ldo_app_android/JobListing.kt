@@ -171,9 +171,10 @@ class JobListing : AppCompatActivity() {
                 intent.putExtra("detail_title", titles[pos])
                 intent.putExtra("detail_description", descriptions[pos])
                 intent.putExtra("detail_salary", salaries[pos])
-                Toast.makeText(this@JobListing,
+            /*    Toast.makeText(this@JobListing,
                         "Clicked on " + holder.feedTitle.text + "!",
                         Toast.LENGTH_SHORT).show()
+            */
                 startActivity(intent)
             }
         }

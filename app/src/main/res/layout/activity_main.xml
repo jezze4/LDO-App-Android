@@ -15,6 +15,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="20dp"
+    android:paddingTop="100dp"
     >
     <ImageView
         android:id="@+id/ldo_logo"
@@ -22,6 +23,7 @@
         android:layout_height="100dp"
         android:src="@drawable/ldo_logo_after_nobg"
         android:layout_marginBottom="20dp"
+        android:background=""
         />
 
     <Button

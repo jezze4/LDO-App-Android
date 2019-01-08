@@ -1,6 +1,5 @@
 package com.example.jezze.ldo_app_android
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
