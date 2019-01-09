@@ -13,14 +13,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AddListing"/>
-        <activity
-            android:name=".JobListing"/>
-        <activity android:name=".JobDetail"/>
+        <activity android:name=".AddListing" />
+        <activity android:name=".JobListing" />
+        <activity android:name=".JobDetail" />
+        <activity android:name=".JobDetail2" />
+        <activity android:name=".Apply"></activity>
     </application>
 
 </manifest>

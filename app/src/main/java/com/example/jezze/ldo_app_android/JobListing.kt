@@ -43,7 +43,7 @@ class JobListing : AppCompatActivity() {
     private var descriptions : ArrayList<String>? = null
     private var salaries : ArrayList<String>? = null
     private var dates : ArrayList<String>? = null
-    private var locations : ArrayList<String>? = null
+    private var requirements : ArrayList<String>? = null
     private var adapter : FeedAdapter? = null
     private var item_listing : LinearLayout? = null
 
@@ -61,6 +61,8 @@ class JobListing : AppCompatActivity() {
                         descriptions!!.add(value)
                     if (jobData.key == "salary")
                         salaries!!.add(value)
+                    if (jobData.key == "requirements")
+                        requirements!!.add(value)
                 }
             }
             adapter!!.notifyDataSetChanged()
@@ -79,7 +81,7 @@ class JobListing : AppCompatActivity() {
 
         titles = ArrayList()
         dates = ArrayList()
-        locations = ArrayList()
+        requirements = ArrayList()
         descriptions = ArrayList()
         salaries = ArrayList()
 
@@ -89,7 +91,7 @@ class JobListing : AppCompatActivity() {
     private fun refresh(){
         titles!!.clear()
         dates!!.clear()
-        locations!!.clear()
+        requirements!!.clear()
         descriptions!!.clear()
         salaries!!.clear()
     }
@@ -102,6 +104,7 @@ class JobListing : AppCompatActivity() {
         adapter = FeedAdapter(this,
                                 titles as List<String>,
                                 descriptions as List<String>,
+                                requirements as List<String>,
                                 salaries as List<String>)
 
         item_listing = findViewById(R.id.item_box)
@@ -151,6 +154,7 @@ class JobListing : AppCompatActivity() {
     inner class FeedAdapter(private val context: Context,
                             private val titles: List<String>,
                             private val descriptions: List<String>,
+                            private val requirements: List<String>,
                             private val salaries: List<String>)
                             :RecyclerView.Adapter<FeedHolder>(){
 
@@ -171,6 +175,7 @@ class JobListing : AppCompatActivity() {
                 intent.putExtra("detail_title", titles[pos])
                 intent.putExtra("detail_description", descriptions[pos])
                 intent.putExtra("detail_salary", salaries[pos])
+                intent.putExtra("detail_requirements", requirements[pos])
             /*    Toast.makeText(this@JobListing,
                         "Clicked on " + holder.feedTitle.text + "!",
                         Toast.LENGTH_SHORT).show()

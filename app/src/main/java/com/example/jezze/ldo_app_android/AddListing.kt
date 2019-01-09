@@ -47,11 +47,11 @@ import com.google.firebase.database.FirebaseDatabase
 
     /* Upload to Database */
     private val uploadListener = View.OnClickListener {
-        _titleString = title!!.text.toString()
-        _descString = description!!.text.toString()
-        _reqString = requirements!!.text.toString()
-        _salaryString = "$" + salary!!.text.toString()
-        _payTypeString = payType!!.selectedItem.toString()
+        _titleString = title?.text.toString()
+        _descString = description?.text.toString()
+        _reqString = requirements?.text.toString()
+        _salaryString = "$" + salary?.text.toString()
+        _payTypeString = payType?.selectedItem.toString()
 
         /* Upload data if title and description are not empty
          * Start a new node with the _titleString as root (Change to Date!)
@@ -60,7 +60,7 @@ import com.google.firebase.database.FirebaseDatabase
          *   _Requirements : ArrayList<String>*/
         if(_titleString != "" && _descString != ""){
 
-            //Appen to _salaryString from _payTypeString /hr /week, etc...
+            //Append to _salaryString from _payTypeString /hr /week, etc...
             when(_payTypeString){
                 "Hourly" -> _salaryString = _salaryString.plus("/hr")
                 "Weekly" -> _salaryString = _salaryString.plus("/week")
@@ -88,8 +88,8 @@ import com.google.firebase.database.FirebaseDatabase
                 title!!.setHint("Enter a Title...")
             }
             if(_descString == "") {
-                description!!.setError("A description is required!")
-                description!!.setHint("Enter a description...")
+                description?.error = "A description is required!"
+                description?.hint = "Enter a description..."
             }
         }
     }
