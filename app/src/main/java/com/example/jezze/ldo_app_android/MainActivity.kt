@@ -42,11 +42,11 @@ class MainActivity : Activity() {
         val button_addjob = findViewById<Button>(R.id.add_button)
         val button_search = findViewById<Button>(R.id.search_button)
 
-        button_addjob.setOnClickListener() {
+        button_addjob.setOnClickListener {
             val intent = Intent(this, AddListing::class.java)
             startActivity(intent)
         }
-        button_search.setOnClickListener() {
+        button_search.setOnClickListener {
             val intent = Intent(this, JobListing::class.java)
             startActivity(intent)
         }

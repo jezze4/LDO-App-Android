@@ -3,6 +3,7 @@ package com.example.jezze.ldo_app_android
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Button
 import android.widget.TextView
 
 class JobDetail : AppCompatActivity() {
@@ -34,6 +35,14 @@ class JobDetail : AppCompatActivity() {
         descriptionTV.text = detail_description
         salaryTV.text = detail_salary
         reqTV.text = detail_reqs
+
+        val applyButton = findViewById<Button>(R.id.apply_button)
+
+        applyButton.setOnClickListener {
+            val intent = Intent(this, Apply::class.java)
+            intent.putExtra("job_title", detail_title)
+            startActivity(intent)
+        }
 
 
     }
